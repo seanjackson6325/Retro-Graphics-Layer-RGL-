@@ -1,5 +1,5 @@
 # RGL (Retro Graphics Layer)
-Old retro graphics layer for SDL2
+Old retro graphics layer for SDL4
 Epoch is a high resolution, cross platform time library for C/C++.
 This library can provide time measurements of less than one microsecond (1E-6 seconds),
 as well as date and time information in both local and UTC time.
