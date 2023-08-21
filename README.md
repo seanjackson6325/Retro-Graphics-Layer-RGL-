@@ -77,6 +77,24 @@ Features include:
  - Returns NULL on failure
 
 
+#### SDL_Color* SDL_RGBToRetroColor(SDL_RetroScreen*, Uint8 r, Uint8 g, Uint8 b)
+ - Convert a 24-bit color to it's closest color in the color palette of the SDL_RetroScreen
+ - This is useful if you need to convert specific colors for some reason (such as rendering geometry). Otherwise, it's much safer to convert Surfaces using SDL_ConvertSurfaceToRetro and SDL_CreateRetroTextureFromSurface
+
+
+#### void SDL_SetRetroRenderDrawColor(SDL_RetroScreen*, Uint8 r, Uint8 g, Uint8 b)
+ - Set the current draw color of a SDL_RetroScreen.
+ - The 24-bit color value will be converted to it's closest color in the color palette of the SDL_RetroScreen using SDL_RGBToRetroColor
+
+
+
+#### void SDL_SetRetroRenderTarget(SDL_RetroScreen*, SDL_Texture*)
+ - Change the current rendering target of the SDL_RetroScreen to a different rendering target than that of the frame buffer of the SDL_RetroScreen. To switch back to the frame buffer, pass in NULL for the SDL_Texture*
+
+
+
+
+
 
 ## Examples:
 
