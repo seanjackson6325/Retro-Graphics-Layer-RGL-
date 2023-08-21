@@ -37,9 +37,10 @@ RGL is a software layer on top of SDL2 written in C with the goal of easily crea
   		int render_flags       // flags for SDL_Renderer
 	)
  - Returns a pointer to a SDL_RetroScreen created in heap memory. Should be cleaned up using SDL_DestroyRetroScreen(...)
+ - Returns NULL on failure
 
 
-#### SDL_RetroScreen* SDL_CreateRetroScreen(...)
+#### void SDL_CreateRetroScreen(...)
  - Use this to free memory used by a SDL_RetroScreen
 
 
