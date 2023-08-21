@@ -1,5 +1,6 @@
 # RGL (Retro Graphics Layer)
 RGL is a software layer on top of SDL2 written in C with the goal of easily creating convincing retro graphics.
+I created this to simplify my rendering code, as well as to partially automate the task of creating pixel art.
 Features include:
 - Functions to convert 24-bit color bitmaps to retro resolution and color palettes (to make pixel art easy)
 - Choosing a specific color to use as a transparency color in textures
