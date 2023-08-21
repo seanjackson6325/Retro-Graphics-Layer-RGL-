@@ -94,6 +94,11 @@ Features include:
  - Change the current rendering target of the SDL_RetroScreen to a different rendering target than that of the frame buffer of the SDL_RetroScreen. To switch back to the frame buffer, pass in NULL for the SDL_Texture*
 
 
+#### All function for premade color palettes
+ - All function below return a pointer to a SDL_RetroColorPalette
+ - The last 3 digits at the end of each function name refer to how many bits are used for red, green, and blue. For example, "332" means 3 bits for red, 3 bits for green, and 2 bits for blue.
+
+	
 
 
 
