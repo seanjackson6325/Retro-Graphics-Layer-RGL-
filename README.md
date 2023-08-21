@@ -97,7 +97,30 @@ Features include:
 #### All function for premade color palettes
  - All function below return a pointer to a SDL_RetroColorPalette
  - The last 3 digits at the end of each function name refer to how many bits are used for red, green, and blue. For example, "332" means 3 bits for red, 3 bits for green, and 2 bits for blue.
+	
+ 		SDL_RetroPalette* SDL_CreateRetroPaletteRGB233();
+		SDL_RetroPalette* SDL_CreateRetroPaletteRGB323();
+		SDL_RetroPalette* SDL_CreateRetroPaletteRGB332();
 
+		SDL_RetroPalette* SDL_CreateRetroPaletteRGB223();
+		SDL_RetroPalette* SDL_CreateRetroPaletteRGB232();
+		SDL_RetroPalette* SDL_CreateRetroPaletteRGB322();
+
+		SDL_RetroPalette* SDL_CreateRetroPaletteRGB123();
+		SDL_RetroPalette* SDL_CreateRetroPaletteRGB132();
+		SDL_RetroPalette* SDL_CreateRetroPaletteRGB231();
+		SDL_RetroPalette* SDL_CreateRetroPaletteRGB321();
+		SDL_RetroPalette* SDL_CreateRetroPaletteRGB222();
+
+		SDL_RetroPalette* SDL_CreateRetroPaletteRGB122();
+		SDL_RetroPalette* SDL_CreateRetroPaletteRGB212();
+		SDL_RetroPalette* SDL_CreateRetroPaletteRGB221();
+
+		SDL_RetroPalette* SDL_CreateRetroPaletteRGB112();
+		SDL_RetroPalette* SDL_CreateRetroPaletteRGB121();
+		SDL_RetroPalette* SDL_CreateRetroPaletteRGB211();
+
+		SDL_RetroPalette* SDL_CreateRetroPaletteRGB111();
 	
 
 
