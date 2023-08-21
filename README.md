@@ -12,61 +12,30 @@ RGL is a software layer on top of SDL2 written in C with the goal of easily crea
 
 
 
-#### Epoch_t
+#### SDL_RetroScreen
 
-- Essentially acts as a timer to hold elapsed time info
-
-
-#### Epoch_SysInfo_t
-
-- Holds current system time information.
-
-	    typedef struct
-	    {
-		unsigned short year;      // current year
-		unsigned short month;     // current month (0-11)
-		unsigned short weekday;   // current weekday (0-6)
-		unsigned short day;       // current day (0-364)
-		unsigned short hour;      // current hour (0-23)
-		unsigned short minute;    // current minute (0-59)
-		unsigned short second;    // current second (0-59)
-	    } Epoch_SysInfo_t;
-    
+- A window and rendering structure for rendering retro graphics. The structure's variables are complex and should not be tampered with. Every rendering function goes back to this structure.
 
 
+#### SDL_RetroPalette
 
-## Constants:
-
-
-#### EPOCH_LOCAL_TIME
-
-- Used to query system time information in local time (the time on your machine).
-
-
-#### EPOCH_UTC_TIME
-
-- Used to query system time information in universal coordinated time (UTC).
-
+- A structure that's used to create a custon retro color palette. This structure is complex and the variables should not be tampered with directly.
 
 
 
 ## Functions:
 
 
-#### unsigned char Epoch__Init();
-- Intializes internal variables for use. Needs to be called only once at the start of the program.
+#### SDL_RetroScreen* SDL_CreateRetroScreen(...)
 
-  
-#### void Epoch__Start(Epoch_t*);
-- Initializes an Epoch_t and resets it's elapsed time. This must be called to start an Epoch_t before it's elapsed time is ever queried.
-
-
-#### double Epoch__QueryChange(Epoch_t*);
-- Gets the elapsed time from an Epoch_t.
-
-  
-#### void Epoch__QuerySysInfo(Epoch_SysInfo_t*, unsigned char type);
-- Fill a Epoch_SysInfo_t with system time information. "type" should be either EPOCH_LOCAL_TIME or EPOCH_UTC_TIME.
+	SDL_RetroScreen* SDL_CreateRetroScreen
+ 	(
+  		const char* t,         // title that will appear on window
+    		Uint16 w, Uint16 h,    // width and height of screen buffer (not window)
+      		SDL_RetroPalette* p,   // palette screen will use
+		int window_flags,      // flags for SDL_Window
+  		int render_flags       // flags for SDL_Renderer
+	)
 
 
 ## Examples:
