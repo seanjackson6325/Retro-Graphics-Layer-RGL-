@@ -40,8 +40,22 @@ RGL is a software layer on top of SDL2 written in C with the goal of easily crea
  - Returns NULL on failure
 
 
-#### void SDL_CreateRetroScreen(...)
+#### void SDL_DestroyRetroScreen(SDL_RetroScreen*)
  - Use this to free memory used by a SDL_RetroScreen
+ - Keep in mind that the SDL_RetroPalette will also be freed
+
+
+#### SDL_RetroPalette* SDL_CreateRetroPalette(...)
+
+	SDL_RetroPalette* SDL_CreateRetroPalette
+ 	(
+  		size_t num,                                 // desired # of colors in the palette
+    		Uint8 rmask,  Uint8 gmask,  Uint8 bmask,    // masks to isolate red, green, and blue bits
+      		Uint8 rshift, Uint8 gshift, Uint8 bshift    // # of places masked bits should be shifted to be most significant
+	)
+ - Returns a pointer to a SDL_RetroPalette created in heap memory. Should be cleaned up using SDL_DestroyRetroPalette(...)
+ - Keep in mind that SDL_DestroyRetroScreen(...) destroys it's associated SDL_RetroPalette
+ - Returns NULL on failure
 
 
 ## Examples:
