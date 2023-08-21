@@ -74,6 +74,7 @@ Features include:
 #### SDL_Texture* SDL_CreateRetroTextureFromSurface(SDL_RetroScreen*, SDL_Surface*, int bcolor)
  - Use this to convert a 24-bit color SDL_Surface to a texture that can be blitted and scaled to a SDL_RetroScreen
  - A pointer to a new SDL_Texture is returned, and the source SDL_Surface is unaltered
+ - bcolor is the index of the color in the color palette of the SDL_RetroScreen to use as a background color. Pixels with color index of bcolor will not be rendered. This is similar to how 8-bit and 16-bit consoles dealt with removing backgrounds from bitmaps. Pass in -1 if there is no background color to be removed.
  - Keep in mind that this functions calls SDL_ConvertSurfaceToRetro internally, so it would be redundant to use an already converted surface as the source
  - Returns NULL on failure
 
