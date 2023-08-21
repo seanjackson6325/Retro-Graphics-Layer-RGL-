@@ -64,6 +64,20 @@ Features include:
  - Keep in mind that SDL_DestroyRetroScreen(...) destroys it's associated SDL_RetroPalette
 
 
+#### SDL_Surface* SDL_ConvertSurfaceToRetro(SDL_RetroScreen*, SDL_Surface*)
+ - Use this to convert a 24-bit color SDL_Surface to the pixel format used by the SDL_RetroScreen
+ - A pointer to a new SDL_Surface is returned, and the original is unaltered
+ - Returns NULL on failure
+
+
+#### SDL_Texture* SDL_CreateRetroTextureFromSurface(SDL_RetroScreen*, SDL_Surface*, int bcolor)
+ - Use this to convert a 24-bit color SDL_Surface to a texture that can be blitted and scaled to a SDL_RetroScreen
+ - A pointer to a new SDL_Texture is returned, and the source SDL_Surface is unaltered
+ - Keep in mind that this functions calls SDL_ConvertSurfaceToRetro internally, so it would be redundant to use an already converted surface as the source
+ - Returns NULL on failure
+
+
+
 ## Examples:
 
 #### Run a loop for five seconds
