@@ -94,9 +94,10 @@ Features include:
  - Change the current rendering target of the SDL_RetroScreen to a different rendering target than that of the frame buffer of the SDL_RetroScreen. To switch back to the frame buffer, pass in NULL for the SDL_Texture*
 
 
-#### All function for premade color palettes
- - All function below return a pointer to a SDL_RetroColorPalette
+#### All function for pre-made color palettes
+ - All functions below return a pointer to a SDL_RetroColorPalette
  - The last 3 digits at the end of each function name refer to how many bits are used for red, green, and blue. For example, "332" means 3 bits for red, 3 bits for green, and 2 bits for blue.
+ - It's recommended to use these color palettes over creating your own (just because it's easier) but all of the functions above give you the tools to also generate your own custom color palette.
 	
  		SDL_RetroPalette* SDL_CreateRetroPaletteRGB233();
 		SDL_RetroPalette* SDL_CreateRetroPaletteRGB323();
