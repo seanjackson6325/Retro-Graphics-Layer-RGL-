@@ -32,10 +32,11 @@ RGL is a software layer on top of SDL2 written in C with the goal of easily crea
  	(
   		const char* t,         // title that will appear on window
     		Uint16 w, Uint16 h,    // width and height of screen buffer (not window)
-      		SDL_RetroPalette* p,   // palette screen will use
+      		SDL_RetroPalette* p,   // retro palette screen will use
 		int window_flags,      // flags for SDL_Window
   		int render_flags       // flags for SDL_Renderer
 	)
+ - Returns a pointer to a SDL_RetroScreen created in heap memory. Should be cleaned up using SDL_DestroyRetroScreen(...)
 
 
 ## Examples:
