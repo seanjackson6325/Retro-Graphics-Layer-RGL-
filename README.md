@@ -129,7 +129,7 @@ Features include:
 
 ## Examples:
 
-#### Run a loop for five seconds
+#### Display a converted, retro bitmap on a window
 
 
 	#include <stdbool.h>
@@ -223,3 +223,7 @@ Features include:
 		run();
 		return 0;
 	}
+
+
+
+![alt text]([http://url/to/img.png](https://drive.google.com/file/d/1idT2Nomf17tz4TCBfSO-TU_RDaz2iIdK/view?usp=sharing)https://drive.google.com/file/d/1idT2Nomf17tz4TCBfSO-TU_RDaz2iIdK/view?usp=sharing)
