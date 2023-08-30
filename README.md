@@ -132,56 +132,94 @@ Features include:
 #### Run a loop for five seconds
 
 
-	#include <stdio.h>
-	#include "epoch.h"
+	#include <stdbool.h>
+	#include "RGL.h"
 	
-	int main(int argc, char* argv[])
+	// A pointer for the SDL_RetroScreen
+	SDL_RetroScreen* screen;
+	// A pointer to the SDL_RetroPalette for the screen
+	SDL_RetroPalette* palette;
+	
+	// A pointer to a test texture
+	SDL_Texture* texture;
+	
+	// initialize screen and SDL
+	void init()
 	{
-	    // Initialize Epoch
-	    Epoch__Init();
+		SDL_Init(SDL_INIT_EVERYTHING);
 	
-	    // Create a new timer
-	    Epoch_t timer;
+		// Create a 256 color palette
+		// 3 bits red, 2 bits green, 3 bits blue
+		palette = SDL_CreateRetroPaletteRGB323();
 	
-	    // Start the timer
-	    Epoch__Start(&timer);
-	    // Keep track of elapsed time
-	    double elapsed;
+		// create a new retro screen
+		screen = SDL_CreateRetroScreen
+		(
+			"A 256 color landscape...",
+			320, 240,
+			palette,
+			SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE,
+			SDL_RENDERER_ACCELERATED
+		);
 	
-	    // Print out elapsed time
-	    // for five seconds
-	    do
-	    {
-	        // Get change in time since the
-	        // timer was started
-	        elapsed = Epoch__QueryChange(&timer);
-	        printf("%f\n", elapsed);
-	    }
-	    while (elapsed < 5.0);
+		// create a surface and load a bitmap
+		SDL_Surface* surf = SDL_LoadBMP("testbmp5.bmp");
+		// create a retro, converted texture from the surface
+		texture = SDL_CreateRetroTextureFromSurface(screen, surf, -1);
 	}
-
-#### Get local time info
-
-	#include <stdio.h>
-	#include "epoch.h"
 	
-	int main(int argc, char* argv[])
+	// just to clean up
+	void close()
 	{
-	    // Initialize Epoch
-	    Epoch__Init();
+		//destroy the texture
+		SDL_DestroyTexture(texture);
 	
-	    // Used to hold system information
-	    Epoch_SysInfo_t info;
+		// destroy the retro screen
+		// also destroys the palette!
+		SDL_DestroyRetroScreen(screen);
 	
-	    // Get current system information (local time)
-	    Epoch__QuerySysInfo(&info, EPOCH_LOCAL_TIME);
+		// free all SDL resources
+		SDL_Quit();
+	}
 	
-	    // Print some info
-	    printf("Current Year: %d\n", info.year);
-	    printf("Current Month: %d\n", info.month);
-	    printf("Current Weekday: %d\n", info.weekday);
-	    printf("Current Day: %d\n", info.day);
-	    printf("Current Hour: %d\n", info.hour);
-	    printf("Current Minute: %d\n", info.minute);
-	    printf("Current Second: %d\n", info.second);
+	// render the image
+	void render()
+	{
+		// prepare screen for rendering...
+		SDL_RenderRetroStart(screen);
+	
+		// draw the texture
+		SDL_RenderCopy(screen->renderer, texture, NULL, NULL);
+	
+		// finish render, let SDL swap buffers etc.
+		// this function calls SDL_RenderPresent
+		SDL_RenderRetroFinish(screen);
+	}
+	
+	// poll events for window and rendering
+	void run()
+	{
+		init();
+	
+		bool running = true;
+		SDL_Event event;
+	
+		while (running)
+		{
+			while (SDL_PollEvent(&event))
+			{
+				if (event.type == SDL_QUIT)
+				{
+					running = false;
+				}
+			}
+			render();
+		}
+	}
+	
+	
+	int main(int argc, char** argv)
+	{
+		run();
+		return 0;
 	}
