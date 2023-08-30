@@ -129,7 +129,7 @@ Features include:
 
 ## Examples:
 
-#### Display a converted, retro bitmap on a window
+#### Display a converted, retro bitmap on a window (before and after comparison below)
 
 
 	#include <stdbool.h>
